@@ -1,0 +1,26 @@
+services:
+  cash_in_datase:
+    image: postgres:15.4-alpine
+    ports:
+      - ${CASH_IN_DATABASE_PORT}:5432
+    volumes:
+      - cash_in_datase-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${CASH_IN_DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${CASH_IN_DATABASE_PASSWORD}
+      POSTGRES_DB: ${CASH_IN_DATABASE_NAME}
+
+  cash_out_datase:
+    image: postgres:15.4-alpine
+    ports:
+      - ${CASH_OUT_DATABASE_PORT}:5432
+    volumes:
+      - cash_out_datase-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${CASH_OUT_DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${CASH_OUT_DATABASE_PASSWORD}
+      POSTGRES_DB: ${CASH_OUT_DATABASE_NAME}
+
+volumes:
+  cash_in_datase-db:
+  cash_out_datase-db:
